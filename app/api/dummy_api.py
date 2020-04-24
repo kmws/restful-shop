@@ -1,5 +1,6 @@
 from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
+from models.user import User
 
 from app.schemes.dummy_schema import DummySchema, DummyReturnSchema
 
