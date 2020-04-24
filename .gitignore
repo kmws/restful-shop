@@ -5,3 +5,4 @@ config_test.properties
 __pycache__/
 /migrations
 *.db
+docker/
