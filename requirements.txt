@@ -1,6 +1,9 @@
-Flask==1.1.1
-Flask-SQLAlchemy==2.4.1
-Flask-Migrate==2.5.3
-flask-restx==0.2.0
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+flask-restx
 pytest
 marshmallow
+Flask-Script
+flask-accepts
+psycopg2-binary

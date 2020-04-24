@@ -7,7 +7,7 @@ class Database:
     def __init__(self):
         self.db = None
 
-    def init(self, app):
+    def init(self, app: object) -> object:
         self.db = SQLAlchemy(app)
         migrate = Migrate(app, self.db)
 

@@ -1,0 +1,17 @@
+﻿version: '2.0'
+
+services:
+  db:
+    image: sameersbn/postgresql:10-2
+    container_name: postgres
+    restart: always
+    environment:
+      - DEBUG=false
+      - DB_TEMPLATE=postgres
+      - DB_USER=postgres
+      - DB_PASS=mysecretpassword
+      - DB_NAME=sdn_db
+    volumes:
+      - ${PWD}/docker/db:/var/lib/postgresql
+    ports:
+      - 5566:5432
