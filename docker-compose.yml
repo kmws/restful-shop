@@ -10,7 +10,7 @@ services:
       - DB_TEMPLATE=postgres
       - DB_USER=postgres
       - DB_PASS=mysecretpassword
-      - DB_NAME=sdn_db
+      - DB_NAME=db
     volumes:
       - ${PWD}/docker/db:/var/lib/postgresql
     ports:
