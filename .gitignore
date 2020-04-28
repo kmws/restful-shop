@@ -1,8 +1,8 @@
-# Created by .ignore support plugin (hsz.mobi)
 config.properties
-config_test.properties
 .idea
 __pycache__/
+venv/
 /migrations
 *.db
 docker/
+
