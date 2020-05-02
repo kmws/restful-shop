@@ -2,11 +2,11 @@ Flask==1.1.2
 Flask-SQLAlchemy==2.4.1
 Flask-Login==0.5.0
 Flask-Cors==3.0.8
+Flask-Migrate==2.5.3
+flask-restx==0.2.0
+flask-accepts==0.16.6
 
-Flask-Migrate
-flask-restx
 pytest
 marshmallow
 Flask-Script
-flask-accepts
 psycopg2-binary

@@ -52,6 +52,9 @@ class ConfigProperties:
     def get_db_type(self):
         return self.config.get('DatabaseSection', 'db_type')
 
+    def get_language(self):
+        return self.config.get('AppSection', 'language')
+
     def is_production(self):
         return self.get_flask_config() == 'production'
 
