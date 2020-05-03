@@ -11,7 +11,6 @@ from tools.database import get_db
 
 @pytest.fixture(scope='session')
 def client():
-    print("HELLO CLIENT")
     current_dir = os.path.dirname(os.path.abspath(__file__))
     sqlite_file_path = current_dir + '/sqlite.db'
 
@@ -32,7 +31,6 @@ def client():
 
 @pytest.fixture(autouse=True)
 def clean_db():
-    print("HELLO DB")
     meta = get_db().metadata
     for table in reversed(meta.sorted_tables):
         print('Clear table %s' % table)
