@@ -2,9 +2,9 @@
 
 
 
-def test_dummy(client, db):
-    print("HELLO!")
+def test_dummy(client):
+    pass
 
 
-def test_doo(client, db):
-    print("HEOOO")
+def test_doo(client):
+    pass
