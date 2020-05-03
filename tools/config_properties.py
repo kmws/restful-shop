@@ -8,13 +8,13 @@ def get_config():
     return config_properties
 
 
-def init_config(config_file=None):
+def init_config(config_file=None, test_db_path=None):
     global config_properties
 
     if config_file is None:
         config_file = 'config.properties'
 
-    config_properties = ConfigProperties(config_file)
+    config_properties = ConfigProperties(config_file, test_db_path)
 
 
 class Config(object):
@@ -33,12 +33,15 @@ class ProductionConfig(Config):
 
 
 class ConfigProperties:
-    def __init__(self, config_file):
+    def __init__(self, config_file, test_db_path):
         self.config = configparser.RawConfigParser()
         path = dirname(dirname(realpath(__file__))) + '/' + config_file
         if not exists(path):
             raise AttributeError('Path not exists!')
         self.config.read(path)
+        if test_db_path is not None:
+            self.config.set('DatabaseSection', 'db_type', 'sqlite')
+            self.config.set('DatabaseSection', 'db_config', test_db_path)
 
     def get_flask_config(self):
         return self.config.get('FlaskSection', 'flask_config')

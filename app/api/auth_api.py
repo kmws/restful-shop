@@ -1,3 +1,4 @@
+import flask_login
 from flask import request
 from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
@@ -15,3 +16,10 @@ class LoginResource(Resource):
     @responds(status_code=204, api=ns)
     def post(self):
         auth_repository.login_user(request.json['email'], request.json['password'])
+
+
+@ns.route('/logout')
+class LogoutResource(Resource):
+    @responds(status_code=204, api=ns)
+    def get(self):
+        flask_login.logout_user()
