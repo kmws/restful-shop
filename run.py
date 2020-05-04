@@ -1,7 +1,7 @@
 import logging
 
-from app import init_app
-from tools.config_properties import init_config
+from app import init_app, create_root
+from tools.config_properties import init_config, get_config
 from tools.logger_tag import LoggerTag
 
 
@@ -21,4 +21,6 @@ if __name__ == '__main__':
 
     init_config()
     application = init_app()
+    config = get_config()
+    create_root(config.get_root_email(), config.get_root_password())
     application.run(host='0.0.0.0', port=8000)

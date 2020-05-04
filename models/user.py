@@ -16,7 +16,8 @@ class User(UserMixin, Base, get_db().Model):
     is_active = Column(Boolean, default=False)
     last_login = Column(DateTime)
     password_hash = Column(String(128))
-    blocked = Column(Boolean, default=True)
+    blocked = Column(Boolean, default=False)
+    root = Column(Boolean, default=False)
 
     @property
     def password(self):
@@ -30,7 +31,8 @@ class User(UserMixin, Base, get_db().Model):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
-
-
-
+    def from_json(self, data):
+        self.email = data['email']
+        self.first_name = data['firstName'] if 'firstName' in data else None
+        self.last_name = data['lastName'] if 'lastName' in data else None
+        self.password = data['password']

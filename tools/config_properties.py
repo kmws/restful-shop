@@ -58,6 +58,12 @@ class ConfigProperties:
     def get_language(self):
         return self.config.get('AppSection', 'language')
 
+    def get_root_email(self):
+        return self.config.get('RootSection', 'email')
+
+    def get_root_password(self):
+        return self.config.get('RootSection', 'password')
+
     def is_production(self):
         return self.get_flask_config() == 'production'
 

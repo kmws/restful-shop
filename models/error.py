@@ -47,4 +47,18 @@ class Error(Enum):
     USER_ADD_ERROR = {
         'eng': 'There was a problem during'
     }
+    USER_NOT_FOUND = {
+        'eng': 'User with given id doesn\'t exist'
+    }
+    USER_ALREADY_DELETED = {
+        'eng': 'User with given id is already deleted'
+    }
+
+    #ROOT
+    UPDATE_ROOT_FORBIDDEN = {
+        'eng': 'Cannot delete root user'
+    }
+    DELETE_ROOT_FORBIDDEN = {
+        'eng' : 'Cannot delete root user'
+    }
 

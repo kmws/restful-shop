@@ -16,8 +16,8 @@ def client():
 
     if os.path.exists(sqlite_file_path):
         os.remove(sqlite_file_path)
-    if os.path.exists(current_dir + '/api/migrations'):
-        shutil.rmtree(current_dir + '/api/migrations')
+    if os.path.exists(current_dir + '/api_user/migrations'):
+        shutil.rmtree(current_dir + '/api_user/migrations')
 
     init_config(test_db_path="sqlite:////" + sqlite_file_path)
     app = init_app()
