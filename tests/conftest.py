@@ -13,11 +13,10 @@ from tools.database import get_db
 def client():
     current_dir = os.path.dirname(os.path.abspath(__file__))
     sqlite_file_path = current_dir + '/sqlite.db'
-
     if os.path.exists(sqlite_file_path):
         os.remove(sqlite_file_path)
-    if os.path.exists(current_dir + '/api_user/migrations'):
-        shutil.rmtree(current_dir + '/api_user/migrations')
+    if os.path.exists(current_dir + '/api/migrations'):
+        shutil.rmtree(current_dir + '/api/migrations')
 
     init_config(test_db_path="sqlite:////" + sqlite_file_path)
     app = init_app()

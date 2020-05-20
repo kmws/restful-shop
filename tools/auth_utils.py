@@ -25,3 +25,10 @@ def login_required(func, handler=None, *args, **kwargs):
         else:
             return None, 401
     return func(*args, **kwargs)
+
+
+def load_user(user_id):
+    from models.user import User
+    return User.query.get(int(user_id))
+
+
