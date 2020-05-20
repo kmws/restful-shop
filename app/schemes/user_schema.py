@@ -3,6 +3,10 @@ from marshmallow import Schema, fields
 from app.schemes.base_schema import BaseSchema
 
 
+class ReturnAddUserSchema(Schema):
+    id = fields.Integer(required=True)
+
+
 class AddUserSchema(Schema):
     email = fields.String(required=True)
     first_name = fields.String(data_key='firstName')

@@ -6,6 +6,7 @@ from flask_restx import Api
 from flask_script import Manager
 
 from app.routes import register_routes
+from models.error import register_custom_errors
 from tools import auth_utils
 from tools.config_properties import app_config, get_config
 from tools.database import DATABASE
@@ -29,9 +30,10 @@ def init_app():
     DATABASE.init(app)
 
     api = Api(version='1.0', title='api')
-    api_user = Api(version='1.0', title='api user')
-    api_admin = Api(version='1.0', title='api admin')
+    api_user = Api(version='1.0', title='api_user')
+    api_admin = Api(version='1.0', title='api_admin')
     register_routes(app, api, api_user, api_admin)
+    register_custom_errors(app)
 
     login_manager.user_loader(auth_utils.load_user)
 

@@ -4,8 +4,8 @@ import shutil
 import flask_migrate
 import pytest
 
-from app import init_app
-from tools.config_properties import init_config
+from app import init_app, create_root
+from tools.config_properties import init_config, get_config
 from tools.database import get_db
 
 
@@ -15,8 +15,8 @@ def client():
     sqlite_file_path = current_dir + '/sqlite.db'
     if os.path.exists(sqlite_file_path):
         os.remove(sqlite_file_path)
-    if os.path.exists(current_dir + '/api/migrations'):
-        shutil.rmtree(current_dir + '/api/migrations')
+    if os.path.exists(current_dir + '/migrations'):
+        shutil.rmtree(current_dir + '/migrations')
 
     init_config(test_db_path="sqlite:////" + sqlite_file_path)
     app = init_app()

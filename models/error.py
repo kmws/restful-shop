@@ -15,7 +15,7 @@ class CustomError(Exception):
 
     def to_dict(self):
         rv = dict(self.payload or ())
-        rv['errorKey'] = self.error_enum.key
+        rv['errorKey'] = self.error_enum.name
         rv['errorMessage'] = self.error_enum.value[get_config().get_language() or '']
         return rv
 

@@ -4,26 +4,28 @@ from flask_restx import Namespace, Resource
 
 from app.schemes.user_schema import GetUserSchema, UpdateUserSchema
 from repositories import user_repository
-from tools.auth_utils import admin_login_required
+from tools.auth_utils import login_required_admin_api
 
 ns = Namespace('user', description='User')
 
 
 @ns.route('/<int:user_id>')
 class UserItemResource(Resource):
-    @admin_login_required
+    @login_required_admin_api
     @responds(schema=GetUserSchema, api=ns)
     def get(self, user_id):
         user = user_repository.get_user_by_id(user_id)
         return user
 
-    @admin_login_required
+    @login_required_admin_api
     @accepts(schema=UpdateUserSchema, api=ns)
     @responds(status_code=204, api=ns)
     def put(self, user_id):
-        user_repository.update_user(user_id, request.json)
+        schema = UpdateUserSchema()
+        result = schema.load(request.json)
+        user_repository.update_user(user_id, result)
 
-    @admin_login_required
+    @login_required_admin_api
     @responds(status_code=204, api=ns)
     def delete(self, user_id):
         user_repository.delete_user(user_id)
