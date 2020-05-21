@@ -1,0 +1,23 @@
+from tokenize import String
+
+from sqlalchemy import Column, Text, Integer, ForeignKey
+from sqlalchemy.orm import relationship
+
+from models.base import Base
+from models.group import Group
+from models.user import User
+from tools.database import get_db
+
+
+class Product(Base, get_db().Model):
+    __tablename__ = 'product_table'
+
+    name = Column(String(32), nullable=False, unique=True)
+    code = Column(String(32), nullable=False, unique=True)
+    description = Column(Text)
+
+    added_by = Column(Integer, ForeignKey(User.id))
+    group_id = Column(Integer, ForeignKey(Group.id))
+    group = relationship('Group', foreign_keys='Product.group_id')
+
+

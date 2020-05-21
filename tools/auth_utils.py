@@ -41,7 +41,7 @@ def admin_login_required(func, handler=None, *args, **kwargs):
 def login_required(func, handler=None, *args, **kwargs):
     if request.method in EXEMPT_METHODS:
         return func(*args, **kwargs)
-    elif not current_user.is_authenticated:
+    elif not current_user.is_authenticated or not current_user.is_active:
         if handler is None:
             return None, 401
         else:

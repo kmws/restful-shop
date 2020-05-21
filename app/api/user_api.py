@@ -11,7 +11,7 @@ ns = Namespace('user', description='User')
 #TODO: verify if exists
 @ns.route('')
 class UserAddResource(Resource):
-    @accepts(schema=AddUserSchema)
+    @accepts(schema=AddUserSchema, api=ns)
     @responds(schema=ReturnAddUserSchema, status_code=201, api=ns)
     def post(self):
         user = User()
