@@ -5,5 +5,6 @@ from marshmallow import Schema
 class AddProductSchema(Schema):
     name = fields.String(required=True)
     code = fields.String(required=True)
+    price = fields.Float(allow_none=True)
     description = fields.String()
-    group_id = fields.Integer()
+    group_id = fields.Integer(data_key='groupId')

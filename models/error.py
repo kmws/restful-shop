@@ -45,7 +45,7 @@ class Error(Enum):
 
     #USER
     USER_ADD_ERROR = {
-        'eng': 'There was a problem during'
+        'eng': 'There was a problem during adding a user'
     }
     USER_NOT_FOUND = {
         'eng': 'User with given id doesn\'t exist'
@@ -60,5 +60,10 @@ class Error(Enum):
     }
     DELETE_ROOT_FORBIDDEN = {
         'eng' : 'Cannot delete root user'
+    }
+
+    #PRODUCT
+    PRODUCT_ADD_ERROR = {
+        'eng': 'There was a problem during adding a product'
     }
 

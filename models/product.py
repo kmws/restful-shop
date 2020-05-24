@@ -1,6 +1,6 @@
 from tokenize import String
 
-from sqlalchemy import Column, Text, Integer, ForeignKey
+from sqlalchemy import Column, Text, Integer, ForeignKey, Float
 from sqlalchemy.orm import relationship
 
 from models.base import Base
@@ -14,6 +14,7 @@ class Product(Base, get_db().Model):
 
     name = Column(String(32), nullable=False, unique=True)
     code = Column(String(32), nullable=False, unique=True)
+    price = Column(Float, nullable=True)
     description = Column(Text)
 
     added_by = Column(Integer, ForeignKey(User.id))
