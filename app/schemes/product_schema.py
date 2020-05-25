@@ -8,3 +8,11 @@ class AddProductSchema(Schema):
     price = fields.Float(allow_none=True)
     description = fields.String()
     group_id = fields.Integer(data_key='groupId')
+
+
+class PutProductSchema(Schema):
+    name = fields.String()
+    code = fields.String()
+    price = fields.Float(allow_none=True)
+    description = fields.String()
+    group_id = fields.Integer(data_key='groupId')

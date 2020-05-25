@@ -2,7 +2,7 @@ from flask import request
 from flask_accepts import responds, accepts
 from flask_restx import Namespace, Resource
 
-from app.schemes.user_schema import GetUserSchema, UpdateUserSchema
+from app.schemes.user_schema import GetUserSchema, PutUserSchema
 from repositories import user_repository
 from tools.auth_utils import login_required_admin_api
 
@@ -18,10 +18,10 @@ class UserItemResource(Resource):
         return user
 
     @login_required_admin_api
-    @accepts(schema=UpdateUserSchema, api=ns)
+    @accepts(schema=PutUserSchema, api=ns)
     @responds(status_code=204, api=ns)
     def put(self, user_id):
-        schema = UpdateUserSchema()
+        schema = PutUserSchema()
         result = schema.load(request.json)
         user_repository.update_user(user_id, result)
 

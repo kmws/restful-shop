@@ -24,7 +24,7 @@ class GetUserSchema(BaseSchema):
     blocked = fields.Boolean()
 
 
-class UpdateUserSchema(Schema):
+class PutUserSchema(Schema):
     email = fields.String()
     first_name = fields.String(data_key='firstName')
     last_name = fields.String(data_key='lastName')

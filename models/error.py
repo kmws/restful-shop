@@ -66,4 +66,7 @@ class Error(Enum):
     PRODUCT_ADD_ERROR = {
         'eng': 'There was a problem during adding a product'
     }
+    PRODUCT_NOT_FOUND = {
+        'eng': 'Product with given id doesn\'t exist'
+    }
 

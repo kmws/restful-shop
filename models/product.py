@@ -21,4 +21,9 @@ class Product(Base, get_db().Model):
     group_id = Column(Integer, ForeignKey(Group.id))
     group = relationship('Group', foreign_keys='Product.group_id')
 
-
+    def from_json(self, data):
+        self.name = data['name']
+        self.code = data['data']
+        self.price = data['price']
+        self.description = data['description']
+        self.group = data['groupId'] if 'groupId' in data else None

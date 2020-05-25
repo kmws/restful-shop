@@ -17,3 +17,16 @@ def add_product(product: Product, user_id: int):
         raise CustomError(Error.PRODUCT_ADD_ERROR, 400, traceback.print_exc())
 
 
+def update_product(product_data: dict, product_id: int, user_id: int):
+    product = Product.query.filter_by(id=product_id).first()
+    if product is not None:
+        for key, value in product_data.items():
+            if hasattr(product, key):
+                setattr(product, key, value)
+            else:
+                # TODO: raise error
+                pass
+        product.added_by = user_id
+        get_db().session.commit()
+    else:
+        raise CustomError(Error.PRODUCT_NOT_FOUND, 404)
