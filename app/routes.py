@@ -6,6 +6,8 @@ def register_routes(app, api, api_user, api_admin):
     api.add_namespace(auth_namespace)
     from app.api.user_api import ns as user_namespace
     api.add_namespace(user_namespace)
+    from app.api.product_api import ns as product_namespace
+    api.add_namespace(product_namespace)
 
     from app.api_admin.user_api import ns as admin_user_namespace
     api_admin.add_namespace(admin_user_namespace)
