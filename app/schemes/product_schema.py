@@ -10,6 +10,10 @@ class AddProductSchema(Schema):
     group_id = fields.Integer(data_key='groupId')
 
 
+class GetProductSchema(AddProductSchema):
+    pass
+
+
 class PutProductSchema(Schema):
     name = fields.String()
     code = fields.String()
