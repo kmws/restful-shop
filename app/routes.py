@@ -9,6 +9,8 @@ def register_routes(app, api, api_user, api_admin):
 
     from app.api_admin.user_api import ns as admin_user_namespace
     api_admin.add_namespace(admin_user_namespace)
+    from app.api_admin.product_api import ns as admin_product_namespace
+    api_admin.add_namespace(admin_product_namespace)
 
     api_bp = Blueprint('api', __name__)
     api.init_app(api_bp)
