@@ -6,17 +6,16 @@ from tools.config_properties import get_config
 
 
 class CustomError(Exception):
-    def __init__(self, error_enum, status_code=None, payload=None):
+    def __init__(self, error_enum, status_code=None):
         Exception.__init__(self)
         self.error_enum = error_enum
         if status_code is not None:
             self.status_code = status_code
-        self.payload = payload
 
     def to_dict(self):
-        rv = dict(self.payload or ())
+        rv = dict()
         rv['errorKey'] = self.error_enum.name
-        rv['errorMessage'] = self.error_enum.value[get_config().get_language() or '']
+        rv['errorMessage'] = self.error_enum.value[get_config().get_language() or ''].format()
         return rv
 
 
@@ -49,6 +48,12 @@ class Error(Enum):
     }
     USER_NOT_FOUND = {
         'eng': 'User with given id doesn\'t exist'
+    }
+    USER_UPDATE_ERROR = {
+        'eng': 'There was a problem during updating a user'
+    }
+    USER_DELETE_ERROR = {
+        'eng': 'There was a problem during deleting a user'
     }
     USER_ALREADY_DELETED = {
         'eng': 'User with given id is already deleted'

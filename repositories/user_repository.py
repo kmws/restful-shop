@@ -3,17 +3,14 @@ from datetime import datetime
 
 from models.error import CustomError, Error
 from models.user import User
+from repositories import commit_decorator
 from tools.database import get_db
 
 
+#TODO: validate
+@commit_decorator(Error.USER_ADD_ERROR)
 def add_user(user: User):
-    try:
-        get_db().session.add(user)
-        get_db().session.commit()
-    except Exception as e:
-        print(e)
-        # TODO: logger
-        raise CustomError(Error.USER_ADD_ERROR, 400, traceback.print_exc())
+    get_db().session.add(user)
 
 
 def get_user_by_id(user_id: int) -> User:
@@ -24,6 +21,7 @@ def get_user_by_id(user_id: int) -> User:
         raise CustomError(Error.USER_NOT_FOUND, 404)
 
 
+@commit_decorator(Error.USER_UPDATE_ERROR)
 def update_user(user_id: int, user_data: dict):
     user = User.query.filter_by(id=user_id).first()
     if user is not None:
@@ -35,11 +33,11 @@ def update_user(user_id: int, user_data: dict):
             else:
                 # TODO: raise error
                 pass
-        get_db().session.commit()
     else:
         raise CustomError(Error.USER_NOT_FOUND, 404)
 
 
+@commit_decorator(Error.USER_DELETE_ERROR)
 def delete_user(user_id: int):
     user = User.query.filter(User.id == user_id).first()
     if user is not None:
@@ -49,6 +47,5 @@ def delete_user(user_id: int):
             raise CustomError(Error.USER_ALREADY_DELETED, 400)
         user.deleted = True
         user.deleted_at = datetime.now()
-        get_db().session.commit()
     else:
         raise CustomError(Error.USER_NOT_FOUND, 404)

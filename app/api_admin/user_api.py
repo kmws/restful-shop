@@ -9,6 +9,9 @@ from tools.auth_utils import login_required_admin_api
 ns = Namespace('user', description='User')
 
 
+# TODO: CREATE PATCH
+# TODO: CLASS METHOD DECORATOR
+
 @ns.route('/<int:user_id>')
 class UserItemResource(Resource):
     @login_required_admin_api

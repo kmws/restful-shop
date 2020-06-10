@@ -43,7 +43,7 @@ def add_product(product: Product, user_id: int):
     except Exception as e:
         logging.warning('Problem with add new product: ' + product.name)
         traceback.print_exc()
-        raise CustomError(Error.PRODUCT_ADD_ERROR, 400, traceback.print_exc())
+        raise CustomError(Error.PRODUCT_ADD_ERROR, 400)
 
 
 def update_product(product_data: dict, product_id: int, user_id: int):
