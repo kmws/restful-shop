@@ -70,3 +70,11 @@ class Error(Enum):
         'eng': 'Product with given id doesn\'t exist'
     }
 
+    #CART
+    CART_ITEM_ADD_ERROR = {
+        'eng': 'There was a problem during adding a cart item'
+    }
+
+    CART_ITEM_UPDATE_ERROR = {
+        'eng': 'There was a problem during updating a cart item'
+    }

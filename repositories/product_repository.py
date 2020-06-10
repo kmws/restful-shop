@@ -56,6 +56,7 @@ def update_product(product_data: dict, product_id: int, user_id: int):
                 # TODO: raise error
                 pass
         product.added_by = user_id
+        #TODO except
         get_db().session.commit()
     else:
         raise CustomError(Error.PRODUCT_NOT_FOUND, 404)
