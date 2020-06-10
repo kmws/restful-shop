@@ -1,6 +1,4 @@
-from tokenize import String
-
-from sqlalchemy import Column, Text, Integer, ForeignKey, Float
+from sqlalchemy import Column, Text, Integer, ForeignKey, Float, String
 from sqlalchemy.orm import relationship
 
 from models.base import Base

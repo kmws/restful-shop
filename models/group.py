@@ -1,6 +1,5 @@
-from tokenize import String
 
-from sqlalchemy import Column, Integer, ForeignKey, Text
+from sqlalchemy import Column, Integer, ForeignKey, Text, String
 
 from models.base import Base
 from models.user import User
