@@ -9,8 +9,12 @@ from tools.database import get_db
 
 #TODO: validate
 @commit_decorator(Error.USER_ADD_ERROR)
-def add_user(user: User):
-    get_db().session.add(user)
+def add_user(user_to_create: User):
+    user = User.query.filter_by(email=user_to_create.email).first()
+    if user is None:
+        get_db().session.add(user_to_create)
+    else:
+        raise CustomError(Error.USER_ALREADY_EXISTS, 409)
 
 
 def get_user_by_id(user_id: int) -> User:

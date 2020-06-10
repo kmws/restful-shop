@@ -49,6 +49,9 @@ class Error(Enum):
     USER_NOT_FOUND = {
         'eng': 'User with given id doesn\'t exist'
     }
+    USER_ALREADY_EXISTS = {
+        'eng': 'User with given email already exists'
+    }
     USER_UPDATE_ERROR = {
         'eng': 'There was a problem during updating a user'
     }
