@@ -22,4 +22,4 @@ def login_user(email, password):
             raise CustomError(Error.AUTH_LOGIN_WRONG_PASSWORD, 400)
 
     else:
-        raise CustomError(Error.AUTH_LOGIN_NOT_VALID_DATA_ERROR, 400, "email or password is None or len == 0")
+        raise CustomError(Error.AUTH_LOGIN_NOT_VALID_DATA_ERROR, 400)
