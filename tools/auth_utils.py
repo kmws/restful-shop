@@ -49,7 +49,7 @@ def login_required(func, handler=None, *args, **kwargs):
     return func(*args, **kwargs)
 
 
-def login_required_api(func):
+def login_required_user_api(func):
     @wraps
     def decorated_view(*args, **kwargs):
         return login_required(func, response_error_simple(401), *args, **kwargs)

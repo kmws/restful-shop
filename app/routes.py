@@ -9,6 +9,11 @@ def register_routes(app, api, api_user, api_admin):
     from app.api.product_api import ns as product_namespace
     api.add_namespace(product_namespace)
 
+    from app.api_user.user_api import ns as user_user_namespace
+    api_user.add_namespace(user_user_namespace)
+    from app.api_user.cart_api import ns as user_cart_namespace
+    api_user.add_namespace(user_cart_namespace)
+
     from app.api_admin.user_api import ns as admin_user_namespace
     api_admin.add_namespace(admin_user_namespace)
     from app.api_admin.product_api import ns as admin_product_namespace
