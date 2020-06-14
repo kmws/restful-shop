@@ -10,7 +10,7 @@ ns = Namespace('product', description='Product')
 
 @ns.route('/list')
 class ProductGetItemListResource(Resource):
-    @responds(schema=GetProductSchema, status_code=201, many=True, api=ns)
+    @responds(schema=GetProductSchema(many=True), status_code=201, api=ns)
     def get(self):
         price_from = request.args.get('price_from')
         price_to = request.args.get('price_to')

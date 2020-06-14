@@ -25,7 +25,7 @@ class CartItemResource(Resource):
 @ns.route('/list')
 class CartItemListResource(Resource):
     @login_required_user_api
-    @responds(schema=GetCartItemSchema, status_code=200, many=True, api=ns)
+    @responds(schema=GetCartItemSchema(many=True), status_code=200, api=ns)
     def get(self):
         cart_products = cart_repository.get_cart_list_products(user_id=current_user.id)
         return cart_products
