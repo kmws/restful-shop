@@ -50,10 +50,10 @@ def login_required(func, handler=None, *args, **kwargs):
 
 
 def login_required_user_api(func):
-    @wraps
+    @wraps(func)
     def decorated_view(*args, **kwargs):
         return login_required(func, response_error_simple(401), *args, **kwargs)
-    return decorated_view()
+    return decorated_view
 
 
 def login_required_admin_api(func):
