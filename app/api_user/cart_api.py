@@ -11,7 +11,7 @@ from tools.auth_utils import login_required_user_api
 ns = Namespace('cart', description='Cart')
 
 
-@ns.route('/')
+@ns.route('')
 class CartItemResource(Resource):
     @login_required_user_api
     @accepts(schema=AddCartItemSchema, api=ns)

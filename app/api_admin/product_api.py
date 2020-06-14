@@ -11,7 +11,7 @@ from tools.auth_utils import login_required_admin_api
 ns = Namespace('product', description='Product')
 
 
-@ns.route('/')
+@ns.route('')
 class ProductAddItemResource(Resource):
     @login_required_admin_api
     @accepts(schema=GetProductSchema, api=ns)
