@@ -14,7 +14,7 @@ class CartItem(Base, get_db().Model):
     product_id = Column(Integer, ForeignKey(Product.id))
     quantity = Column(Integer)
 
-    product = relationship('Product', foreign_keys='Cart.product_id')
+    product = relationship('Product', foreign_keys='CartItem.product_id')
 
     def from_json(self, data):
         self.product_id = data['product_id']
