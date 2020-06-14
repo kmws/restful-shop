@@ -1,6 +1,5 @@
 import pytest
 
-from app import create_root
 from models.error import Error
 from tools.config_properties import get_config
 
@@ -17,7 +16,6 @@ def test_login_activated_user(client, user_dict, expected_status_codes):
     assert response.json['errorKey'] == Error.AUTH_LOGIN_USER_NOT_ACTIVATED.name
 
     config = get_config()
-    create_root(config.get_root_email(), config.get_root_password())
 
     response = client.post('/auth/login',
                            json={'email': config.get_root_email(), 'password': config.get_root_password()})
