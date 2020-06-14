@@ -44,4 +44,4 @@ def delete_cart_items(cart_item_id: int, user_id: int):
         logging.warning('Problem with delete new cart item: ' + str(cart_item.product_id))
         traceback.print_exc()
         # TODO: set id of product and user id
-        raise CustomError(Error.CART_ITEM_ADD_ERROR, 400, traceback.print_exc())
+        raise CustomError(Error.CART_ITEM_ADD_ERROR, 400)
