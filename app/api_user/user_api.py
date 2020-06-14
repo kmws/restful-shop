@@ -11,12 +11,12 @@ ns = Namespace('user', description='User')
 
 
 @ns.route('')
-class UserAddResource(Resource):
+class UserItemResource(Resource):
 
     @login_required_user_api
     @responds(schema=GetUserSchema, status_code=200, api=ns)
     def get(self):
-        user = user_repository.get_user_by_id(user_id=current_user.id)
+        user = user_repository.get_user_by_id(current_user.id)
         return user
 
     @login_required_user_api
@@ -25,9 +25,9 @@ class UserAddResource(Resource):
     def put(self):
         schema = PutUserSchema()
         result = schema.load(request.json)
-        user_repository.update_user(user_id=current_user.id, user_data=result)
+        user_repository.update_user(current_user.id, result)
 
     @login_required_user_api
     @responds(status_code=204, api=ns)
     def delete(self):
-        user_repository.delete_user(user_id=current_user.id)
+        user_repository.delete_user(current_user.id)
