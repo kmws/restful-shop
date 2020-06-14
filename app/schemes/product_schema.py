@@ -1,5 +1,4 @@
-from flask_restx import fields
-from marshmallow import Schema
+from marshmallow import Schema, fields
 
 
 class AddProductSchema(Schema):

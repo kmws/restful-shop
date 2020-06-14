@@ -21,7 +21,7 @@ class Product(Base, get_db().Model):
 
     def from_json(self, data):
         self.name = data['name']
-        self.code = data['data']
+        self.code = data['code']
         self.price = data['price']
         self.description = data['description']
         self.group = data['groupId'] if 'groupId' in data else None
