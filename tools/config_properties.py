@@ -3,6 +3,8 @@ from os.path import exists, dirname, realpath, join
 
 config_properties = None
 
+DEFAULT_CONFIG_FILENAME = 'config.properties'
+
 
 def get_config():
     return config_properties
@@ -12,7 +14,7 @@ def init_config(config_file=None, test_db_path=None):
     global config_properties
 
     if config_file is None:
-        config_file = 'config.properties'
+        config_file = DEFAULT_CONFIG_FILENAME
 
     config_properties = ConfigProperties(config_file, test_db_path)
 
