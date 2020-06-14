@@ -37,7 +37,7 @@ class ConfigProperties:
         self.config = configparser.RawConfigParser()
         path = dirname(dirname(realpath(__file__))) + '/' + config_file
         if not exists(path):
-            raise AttributeError('Path not exists!')
+            raise FileNotFoundError('Config file does not exist: ' + path)
         self.config.read(path)
         if test_db_path is not None:
             self.config.set('DatabaseSection', 'db_type', 'sqlite')
