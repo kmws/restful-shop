@@ -1,5 +1,5 @@
 import configparser
-from os.path import exists, dirname, realpath
+from os.path import exists, dirname, realpath, join
 
 config_properties = None
 
@@ -35,7 +35,7 @@ class ProductionConfig(Config):
 class ConfigProperties:
     def __init__(self, config_file, test_db_path):
         self.config = configparser.RawConfigParser()
-        path = dirname(dirname(realpath(__file__))) + '/' + config_file
+        path = join(dirname(dirname(realpath(__file__))), config_file)
         if not exists(path):
             raise FileNotFoundError('Config file does not exist: ' + path)
         self.config.read(path)
