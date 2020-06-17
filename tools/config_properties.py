@@ -1,7 +1,9 @@
 import configparser
-from os.path import exists, dirname, realpath
+from os.path import exists, dirname, realpath, join
 
 config_properties = None
+
+DEFAULT_CONFIG_FILENAME = 'config.properties'
 
 
 def get_config():
@@ -12,7 +14,7 @@ def init_config(config_file=None, test_db_path=None):
     global config_properties
 
     if config_file is None:
-        config_file = 'config.properties'
+        config_file = DEFAULT_CONFIG_FILENAME
 
     config_properties = ConfigProperties(config_file, test_db_path)
 
@@ -35,9 +37,9 @@ class ProductionConfig(Config):
 class ConfigProperties:
     def __init__(self, config_file, test_db_path):
         self.config = configparser.RawConfigParser()
-        path = dirname(dirname(realpath(__file__))) + '/' + config_file
+        path = join(dirname(dirname(realpath(__file__))), config_file)
         if not exists(path):
-            raise AttributeError('Path not exists!')
+            raise FileNotFoundError('Config file does not exist: ' + path)
         self.config.read(path)
         if test_db_path is not None:
             self.config.set('DatabaseSection', 'db_type', 'sqlite')
